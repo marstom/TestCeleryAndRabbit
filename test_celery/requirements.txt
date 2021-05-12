@@ -1,0 +1,8 @@
+celery
+
+
+
+ipdb
+ipython
+pylint
+pytest

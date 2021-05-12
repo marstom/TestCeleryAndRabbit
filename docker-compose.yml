@@ -1,0 +1,36 @@
+version: "3"
+services:
+  #   chrome:
+  #     image: selenium/node-chrome:4.0.0-beta-3-20210426
+  #     volumes:
+  #       - /dev/shm:/dev/shm
+  #     depends_on:
+  #       - selenium-hub
+  #     environment:
+  #       - SE_EVENT_BUS_HOST=selenium-hub
+  #       - SE_EVENT_BUS_PUBLISH_PORT=4442
+  #       - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
+  #     ports:
+  #       - "6900-6920:5900"
+
+  #   selenium-hub:
+  #     image: selenium/hub:4.0.0-beta-3-20210426
+  #     container_name: selenium-hub
+  #     ports:
+  #       - "4442:4442"
+  #       - "4443:4443"
+  #       - "4444:4444"
+
+  rabbit1:
+    image: "rabbitmq:management"
+    hostname: "rabbit1"
+    environment:
+      RABBITMQ_ERLANG_COOKIE: "SWQOKODSQALRPCLNMEQG"
+      RABBITMQ_DEFAULT_USER: "rabbitmq"
+      RABBITMQ_DEFAULT_PASS: "rabbitmq"
+      RABBITMQ_DEFAULT_VHOST: "my_vhost"
+    ports:
+      - "15672:15672"
+      - "5672:5672"
+    labels:
+      NAME: "rabbitmq1"
