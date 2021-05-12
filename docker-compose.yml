@@ -22,6 +22,7 @@ services:
   #       - "4444:4444"
 
   rabbit1:
+    container_name: "my_rabbit"
     image: "rabbitmq:management"
     hostname: "rabbit1"
     environment:
@@ -34,3 +35,13 @@ services:
       - "5672:5672"
     labels:
       NAME: "rabbitmq1"
+
+  workers:
+    container_name: "my_worker"
+    command: "celery -A test_celery worker --loglevel=info"
+    build:
+        context: ./celery_worker/
+        dockerfile: Dockerfile
+    depends_on: 
+        - rabbit1
+    
